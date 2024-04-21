@@ -1,20 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiService } from './services/api.service';
 
-import { RouterLink, RouterOutlet } from '@angular/router';
-import { SearchBarComponent } from './search/search-bar/search-bar.component';
+import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
+  template: `<router-outlet></router-outlet>`,
   styleUrls: ['./app.component.scss'],
   standalone: true,
-  imports: [RouterOutlet, RouterLink, SearchBarComponent],
+  imports: [RouterOutlet],
 })
 export class AppComponent implements OnInit {
   title = 'fyle-frontend-challenge';
-
-  constructor(private apiService: ApiService) {}
 
   ngOnInit() {
     // this.apiService.getUser('johnpapa').subscribe(console.log);

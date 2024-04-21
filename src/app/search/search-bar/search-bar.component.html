@@ -1,0 +1,13 @@
+<p-autoComplete
+  [(ngModel)]="selectedItem"
+  [suggestions]="suggestions"
+  (completeMethod)="attemptAutoComplete($event)"
+  [autocomplete]="suggestions[0] || ''"
+  (onSelect)="onSubmit()"
+  (onDropdownClick)="onSubmit()"
+  placeholder="Search for GitHub users"
+  size="50"
+  dropdown="true"
+  dropdownIcon="pi pi-chevron-right"
+  delay="700"
+></p-autoComplete>

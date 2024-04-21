@@ -32,6 +32,9 @@ dependencies:
   octokit:
     specifier: ^3.2.0
     version: 3.2.0
+  primeicons:
+    specifier: ^7.0.0
+    version: 7.0.0
   primeng:
     specifier: ^17.14.1
     version: 17.14.1(@angular/common@16.2.12)(@angular/core@16.2.12)(@angular/forms@16.2.12)(rxjs@7.8.1)(zone.js@0.13.3)
@@ -6446,6 +6449,10 @@ packages:
     resolution: {integrity: sha512-FFw039TmrBqFK8ma/7OL3sDz/VytdtJr044/QUJtH0wK9lb9jLq9tJyIxUwtQJHwar2BqtiA4iCWSwo9JLkzFg==}
     engines: {node: '>=6'}
     dev: true
+
+  /primeicons@7.0.0:
+    resolution: {integrity: sha512-jK3Et9UzwzTsd6tzl2RmwrVY/b8raJ3QZLzoDACj+oTJ0oX7L9Hy+XnVwgo4QVKlKpnP/Ur13SXV/pVh4LzaDw==}
+    dev: false
 
   /primeng@17.14.1(@angular/common@16.2.12)(@angular/core@16.2.12)(@angular/forms@16.2.12)(rxjs@7.8.1)(zone.js@0.13.3):
     resolution: {integrity: sha512-hjJzjiNZR0+zCEbvLidXYzJriwgxj4vTBMTmmw9JP5b17mO3Ruhv7h4ofEThpnc1LyE0W91f8jC+Q/Kg2Xuqrw==}
