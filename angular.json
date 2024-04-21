@@ -30,7 +30,17 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              {
+                "input": "src/app/theme/light.scss",
+                "bundleName": "light",
+                "inject": false
+              },
+              {
+                "input": "src/app/theme/dark.scss",
+                "bundleName": "dark",
+                "inject": false
+              }
             ],
             "scripts": []
           },
@@ -93,7 +103,17 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              {
+                "input": "src/app/theme/light.scss",
+                "bundleName": "light",
+                "inject": false
+              },
+              {
+                "input": "src/app/theme/dark.scss",
+                "bundleName": "dark",
+                "inject": false
+              }
             ],
             "scripts": []
           }

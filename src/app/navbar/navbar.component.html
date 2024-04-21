@@ -1,0 +1,23 @@
+<nav
+  [ngClass]="
+    'h-[70px] fixed w-full transition-all z-50 backdrop-blur-sm bg-slate-200 dark:bg-slate-950 ' +
+    (isAtTop ? 'bg-opacity-95' : 'bg-opacity-80 border-b border-surface-800')
+  "
+>
+  <div
+    class="h-full xl:container mx-auto px-4 md:px-8 lg:px-12 flex flex-row items-center justify-center relative"
+  >
+    <div class="grow flex justify-center">
+      <app-search-bar></app-search-bar>
+    </div>
+
+    <ul class="">
+      <p-button
+        icon="pi pi-sun"
+        outlined="true"
+        severity="secondary"
+        (onClick)="handleDarkModeButtonClicked()"
+      ></p-button>
+    </ul>
+  </div>
+</nav>

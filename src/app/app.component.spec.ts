@@ -29,4 +29,10 @@ describe('AppComponent', () => {
       'fyle-frontend-challenge app is running!'
     );
   });
+
+  // Routes should render the correct component
+  // Search bar should redirect to the correct page on autocomplete, text entered, or button click
+  // Search page should show a valid empty state on invalid user
+  // Search page should show the correct repos for a valid user
+  // All links (repo, user, tags) should match the api
 });
