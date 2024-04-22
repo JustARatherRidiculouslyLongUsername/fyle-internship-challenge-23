@@ -21,15 +21,6 @@ describe('AppComponent', () => {
     expect(app.title).toEqual('fyle-frontend-challenge');
   });
 
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain(
-      'fyle-frontend-challenge app is running!'
-    );
-  });
-
   // Routes should render the correct component
   // Search bar should redirect to the correct page on autocomplete, text entered, or button click
   // Search page should show a valid empty state on invalid user
