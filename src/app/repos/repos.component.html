@@ -1,3 +1,16 @@
+@if(!isReposloading && (repos === null || repos.length === 0)) {
+
+<div
+  class="xl:container mx-auto px-4 md:px-8 lg:px-12 flex flex-col justify-center items-center"
+>
+  <h3 class="text-5xl md:text-6xl mt-4">Nothing Here</h3>
+  <p class="text-[#aaa] opacity-70 text-center mt-2">
+    {{ username }} hasn't created any repositories yet.
+  </p>
+</div>
+
+} @else {
+
 <p-paginator
   (onPageChange)="onPageChange($event)"
   [first]="first"
@@ -9,10 +22,16 @@
 <div
   class="xl:container mx-auto px-4 md:px-8 lg:px-12 py-16 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8"
 >
-  @if(loading) { @for (item of [].constructor(5); track idx; let idx = $index) {
-  <app-repo-tile></app-repo-tile>
-  } } @else {
+  @if(isReposloading) { @for (item of [].constructor(10); track idx; let idx =
+  $index) {
 
-  <div></div>
-  }
+  <app-repo-tile></app-repo-tile>
+
+  } } @else { @for(repo of repos; track repo.url) {
+
+  <app-repo-tile [repo]="repo"></app-repo-tile>
+
+  } }
 </div>
+
+}

@@ -17,15 +17,20 @@
     </div>
   </div>
 </p-card>
-} @else {
+} @else if (repo) {
 
-<p-card header="Title" class="max-w-[550px]">
-  <p class="m-0">
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed
-    consequuntur error repudiandae numquam deserunt quisquam repellat libero
-    asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditate
-    neque quas!
-  </p>
+<p-card class="max-w-[550px]">
+  <a target="_blank" [href]="repo.url">
+    <h5 class="text-2xl">{{ repo.name }}</h5>
+  </a>
+
+  <p class="pt-4">{{ repo.description }}</p>
+
+  <div class="pt-4 flex flex-row gap-2">
+    @for(topic of repo.topics; track $index) {
+    <p-tag [value]="topic"></p-tag>
+    }
+  </div>
 </p-card>
 
 }

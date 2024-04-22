@@ -57,8 +57,16 @@ export class ReposComponent implements OnInit {
     return this.apiService.isLoading;
   }
 
+  get isReposloading(): boolean {
+    return this.apiService.isReposLoading;
+  }
+
   get error(): boolean {
     return this.apiService.is404;
+  }
+
+  get username(): string {
+    return this.apiService.currentUsername;
   }
 
   get repos(): Repo[] | null {
