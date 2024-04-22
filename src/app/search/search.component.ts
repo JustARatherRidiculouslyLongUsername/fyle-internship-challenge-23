@@ -26,66 +26,23 @@ import { Repo } from '../repos/repo.model';
   styleUrls: ['./search.component.scss'],
 })
 export class SearchComponent implements OnInit {
-  query = signal<string | null>(null);
-  loading = true;
-  userProfile: UserProfile | null = null;
-  repos: Repo[] = [];
-  currentPage = 1;
-
-  constructor(private route: ActivatedRoute, private apiService: ApiService) {
-    effect(() => {
-      // Every time a new query is entered, attempt to get the user
-      const q = this.query();
-      if (!q || q.length === 0) {
-        this.userProfile = null;
-        this.loading = false;
-        return;
-      }
-      // this.fetchUserProfile(q);
-      // this.fetchRepos(q);
-    });
-  }
-
-  reset(): void {
-    this.loading = true;
-    this.userProfile = null;
-    this.repos = [];
-  }
-
-  async fetchUserProfile(q: string) {
-    this.apiService
-      .getUser(q)
-      .then((res) => {
-        this.userProfile = {
-          accountURL: res.data.html_url,
-          profilePhotoURL: res.data.avatar_url,
-          bio: res.data.bio,
-          fullName: res.data.name,
-          location: res.data.location,
-          twitterHandle: res.data.twitter_username,
-        };
-        this.loading = false;
-      })
-      .catch((reason) => {
-        const { status } = reason;
-        if (status === 404) {
-          this.userProfile = null;
-          this.loading = false;
-        } else {
-          console.error('Unknown error', { reason });
-        }
-      });
-  }
-
-  async fetchRepos(q: string) {
-    this.apiService.getRepos(q, this.currentPage);
-  }
+  constructor(private route: ActivatedRoute, private apiService: ApiService) {}
 
   ngOnInit(): void {
     this.route.queryParamMap.subscribe((params) => {
-      this.query.set(params.get('q'));
+      this.apiService.currentUsername = params.get('q')!;
+      this.apiService.refresh();
     });
   }
 
-  found = true;
+  get userProfile(): UserProfile | null {
+    return this.apiService.userProfile;
+  }
+
+  get isProfileLoading(): boolean {
+    return this.apiService.isProfileLoading;
+  }
+  get is404(): boolean {
+    return this.apiService.is404;
+  }
 }

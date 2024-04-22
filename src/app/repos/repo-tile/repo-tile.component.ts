@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CardModule } from 'primeng/card';
 import { SkeletonModule } from 'primeng/skeleton';
+import { ApiService } from 'src/app/services/api.service';
 
 @Component({
   selector: 'app-repo-tile',
@@ -11,5 +12,9 @@ import { SkeletonModule } from 'primeng/skeleton';
   styleUrls: ['./repo-tile.component.scss'],
 })
 export class RepoTileComponent {
-  @Input() loading = true;
+  constructor(private apiService: ApiService) {}
+
+  get loading() {
+    return this.apiService.isLoading;
+  }
 }

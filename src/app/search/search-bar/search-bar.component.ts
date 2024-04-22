@@ -30,11 +30,7 @@ type AutoCompleteCompleteEvent = {
 export class SearchBarComponent {
   @Output() searchBarSubmittedEvent = new EventEmitter<never>();
 
-  constructor(
-    private apiService: ApiService,
-    private router: Router,
-    private elementRef: ElementRef
-  ) {}
+  constructor(private apiService: ApiService, private router: Router) {}
 
   selectedItem: any;
 
@@ -56,14 +52,8 @@ export class SearchBarComponent {
     if (!this.selectedItem || (this.selectedItem as string).length === 0) {
       return;
     }
-
-    const event: CustomEvent = new CustomEvent('SearchbarSubmitted', {
-      bubbles: true,
-    });
-    this.elementRef.nativeElement.dispatchEvent(event);
-
     this.router.navigate(['search'], { queryParams: { q: this.selectedItem } });
-    console.log({ item: this.selectedItem });
+    console.log({ quey: this.selectedItem });
   }
 
   @HostListener('keydown.enter', ['$event'])

@@ -5,4 +5,5 @@ export type UserProfile = {
   fullName: string | null;
   location: string | null;
   twitterHandle?: string | null;
+  reposCount: number;
 };
