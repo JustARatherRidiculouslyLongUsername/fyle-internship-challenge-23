@@ -1,0 +1,68 @@
+<div
+  class="xl:container mx-auto px-4 md:px-8 lg:px-12 py-16 pt-[134px] flex flex-col justify-center items-center relative"
+>
+  <div class="flex gap-8 sm:gap-16 flex-col sm:flex-row items-center">
+    @if(isProfileLoading) {
+    <p-skeleton shape="circle" size="250px"></p-skeleton>
+    <div class="flex flex-col gap-3 w-[250px] sm:w-[300px]">
+      <p-skeleton width="100%" height="2rem" borderRadius="6px"></p-skeleton>
+      <p-skeleton width="46%" height="1rem" borderRadius="6px"></p-skeleton>
+      <p-skeleton width="66%" height="1rem" borderRadius="6px"></p-skeleton>
+      <p-skeleton width="33%" height="1rem" borderRadius="6px"></p-skeleton>
+      <p-skeleton
+        width="70%"
+        height="1rem"
+        borderRadius="6px"
+        class="hidden sm:block"
+      ></p-skeleton>
+    </div>
+
+    } @else {
+
+    <img
+      [src]="userProfile?.profilePhotoURL"
+      class="w-[250px] h-[250px] rounded-full border-4 border-surface-border"
+    />
+    <div class="flex flex-col gap-1">
+      <h3 class="text-3xl">{{ userProfile?.fullName }}</h3>
+
+      @if (userProfile?.bio) {
+
+      <p class="pb-4 italic text-text-color-secondary">
+        {{ userProfile?.bio }}
+      </p>
+
+      } @else {
+
+      <div class="pb-4"></div>
+
+      } @if (userProfile?.location) {
+      <p>
+        <i class="pr-2 pi pi-map-marker text-text-color-secondary"></i>
+        {{ userProfile?.location }}
+      </p>
+      }
+
+      <p>
+        <i class="pr-2 pi pi-book text-text-color-secondary"></i>
+        <b>{{ userProfile?.reposCount }}</b> Public
+        {{ userProfile?.reposCount === 1 ? "repository" : "repositories" }}
+      </p>
+
+      @if (userProfile?.twitterHandle) {
+      <p>
+        <i class="pr-2 pi pi-twitter text-text-color-secondary"></i>
+        <a [href]="'https://twitter.com/' + userProfile?.twitterHandle"
+          >&#64; {{ userProfile?.twitterHandle }}</a
+        >
+      </p>
+      }
+
+      <p>
+        <i class="pr-2 pi pi-github text-text-color-secondary"></i>
+        <a [href]="'https://github.com/' + username"> {{ username }}</a>
+      </p>
+    </div>
+    }
+  </div>
+</div>

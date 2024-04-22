@@ -1,9 +1,7 @@
 <nav
   [ngClass]="
     'h-[70px] fixed w-full transition-all z-50 backdrop-blur-sm bg-slate-200 dark:bg-[rgb(10,10,10)] ' +
-    (isAtTop
-      ? 'bg-opacity-95'
-      : 'bg-opacity-80 border-b dark:border-surface-800')
+    (isAtTop ? 'bg-opacity-95' : 'bg-opacity-80 border-b border-surface-border')
   "
 >
   <div

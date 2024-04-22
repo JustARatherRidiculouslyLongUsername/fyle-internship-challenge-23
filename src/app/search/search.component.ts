@@ -1,15 +1,13 @@
-import { Component, OnInit, effect, signal } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SearchBarComponent } from './search-bar/search-bar.component';
 import { NavbarComponent } from '../navbar/navbar.component';
 import { ActivatedRoute } from '@angular/router';
 import { ApiService } from '../services/api.service';
-import { UserProfile } from '../user-profile/user-profile.model';
 
-import { SkeletonModule } from 'primeng/skeleton';
 import { RepoTileComponent } from '../repos/repo-tile/repo-tile.component';
 import { ReposComponent } from '../repos/repos.component';
-import { Repo } from '../repos/repo.model';
+import { UserProfileComponent } from '../user-profile/user-profile.component';
 
 @Component({
   selector: 'app-search',
@@ -18,9 +16,9 @@ import { Repo } from '../repos/repo.model';
     CommonModule,
     SearchBarComponent,
     NavbarComponent,
-    SkeletonModule,
     RepoTileComponent,
     ReposComponent,
+    UserProfileComponent,
   ],
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.scss'],
@@ -35,13 +33,6 @@ export class SearchComponent implements OnInit {
     });
   }
 
-  get userProfile(): UserProfile | null {
-    return this.apiService.userProfile;
-  }
-
-  get isProfileLoading(): boolean {
-    return this.apiService.isProfileLoading;
-  }
   get is404(): boolean {
     return this.apiService.is404;
   }
