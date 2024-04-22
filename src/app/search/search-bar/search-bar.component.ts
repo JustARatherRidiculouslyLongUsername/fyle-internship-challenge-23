@@ -1,4 +1,10 @@
-import { Component, HostListener } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  EventEmitter,
+  HostListener,
+  Output,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
@@ -22,7 +28,13 @@ type AutoCompleteCompleteEvent = {
   styleUrls: ['./search-bar.component.scss'],
 })
 export class SearchBarComponent {
-  constructor(private apiService: ApiService, private router: Router) {}
+  @Output() searchBarSubmittedEvent = new EventEmitter<never>();
+
+  constructor(
+    private apiService: ApiService,
+    private router: Router,
+    private elementRef: ElementRef
+  ) {}
 
   selectedItem: any;
 
@@ -30,6 +42,7 @@ export class SearchBarComponent {
 
   async attemptAutoComplete(event: AutoCompleteCompleteEvent) {
     if (event.query.length < 3) {
+      this.suggestions = [];
       return;
     }
 
@@ -40,6 +53,15 @@ export class SearchBarComponent {
   }
 
   onSubmit() {
+    if (!this.selectedItem || (this.selectedItem as string).length === 0) {
+      return;
+    }
+
+    const event: CustomEvent = new CustomEvent('SearchbarSubmitted', {
+      bubbles: true,
+    });
+    this.elementRef.nativeElement.dispatchEvent(event);
+
     this.router.navigate(['search'], { queryParams: { q: this.selectedItem } });
     console.log({ item: this.selectedItem });
   }

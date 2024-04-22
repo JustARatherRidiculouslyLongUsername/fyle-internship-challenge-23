@@ -5,3 +5,7 @@
 
 @import "tailwindcss/utilities" layer(tailwindcss);
 @import "tailwindcss/components" layer(tailwindcss);
+
+.p-paginator {
+    background: inherit;
+}

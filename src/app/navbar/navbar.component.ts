@@ -14,7 +14,7 @@ import { ThemeService } from '../theme/theme.service';
   styleUrls: ['./navbar.component.scss'],
 })
 export class NavbarComponent {
-  isAtTop = true;
+  isAtTop = false;
 
   constructor(private themeService: ThemeService) {}
 

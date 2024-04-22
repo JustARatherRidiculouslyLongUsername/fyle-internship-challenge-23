@@ -1,24 +1,52 @@
-<app-navbar></app-navbar>
-<div class="h-[200vh]">
-  Lorem ipsum dolor, sit amet consectetur adipisicing elit. Placeat ab neque
-  quibusdam maiores sapiente, quisquam expedita? Doloribus neque culpa aliquam
-  harum iure, aspernatur nemo, voluptas, magnam facere sit nesciunt
-  necessitatibus labore quam incidunt iste corrupti. Porro corporis et dolorum
-  modi rerum recusandae facilis quae maxime minus sint est deleniti, itaque
-  molestias tempora atque alias vel distinctio mollitia quasi harum dolores
-  nostrum reiciendis exercitationem? Nisi voluptate, aperiam neque distinctio
-  quam dicta placeat similique autem modi eveniet veritatis illum sint ea natus
-  quis illo libero odit laborum nobis cumque ad inventore voluptates rem in.
-  Adipisci obcaecati omnis nulla eveniet. Architecto esse quis aspernatur odio
-  id voluptate exercitationem, et ullam vitae reiciendis similique, ducimus
-  eveniet cumque modi voluptas omnis saepe veritatis deserunt eum! Illo nam
-  maiores eaque et nulla dolor, esse sed. Quis vero assumenda nesciunt, dicta
-  nulla voluptas atque porro nihil perspiciatis optio facilis, laborum
-  aspernatur quas exercitationem incidunt. Laudantium veniam totam accusantium
-  minus perspiciatis consequuntur expedita unde, sapiente ipsa ex repellendus,
-  ipsum quas quod veritatis commodi, temporibus recusandae nam provident nobis
-  est eius. Numquam autem saepe ullam praesentium quaerat repudiandae est
-  dolorem. Vel voluptatum atque odit consectetur architecto in maxime
-  accusantium mollitia, repellendus nulla magnam veritatis dolores, optio ab,
-  illo sint?
-</div>
+<app-navbar (SearchbarSubmitted)="reset()"></app-navbar>
+
+<section class="bg-slate-100 dark:bg-[rgb(10,10,10)] overflow-visible">
+  <div
+    class="xl:container mx-auto px-4 md:px-8 lg:px-12 py-16 pt-[134px] flex flex-col justify-center items-center relative"
+  >
+    @if(loading) {
+    <div class="flex gap-8 sm:gap-16 flex-col sm:flex-row items-center">
+      <p-skeleton shape="circle" size="250px"></p-skeleton>
+      <div class="flex flex-col gap-3 w-[250px] sm:w-[300px]">
+        <p-skeleton width="100%" height="2rem" borderRadius="6px"></p-skeleton>
+        <p-skeleton width="46%" height="1rem" borderRadius="6px"></p-skeleton>
+        <p-skeleton width="66%" height="1rem" borderRadius="6px"></p-skeleton>
+        <p-skeleton width="33%" height="1rem" borderRadius="6px"></p-skeleton>
+        <p-skeleton
+          width="70%"
+          height="1rem"
+          borderRadius="6px"
+          class="hidden sm:block"
+        ></p-skeleton>
+      </div>
+    </div>
+    <div
+      class="absolute w-full h-1/2 bottom-0 bg-[#121212] -z-50 sm:hidden"
+    ></div>
+
+    }
+  </div>
+</section>
+
+<section class="pt-8 pb-16">
+  @if (loading) {
+  <app-repos [loading]="loading"></app-repos>
+  } @else if(userProfile === null) {
+  <div
+    class="xl:container mx-auto px-4 md:px-8 lg:px-12 flex flex-col justify-center items-center"
+  >
+    <img
+      src="/assets/img/404.png"
+      alt="A 404 Graphic"
+      class="opacity-45 w-[400px]"
+    />
+    <h3 class="text-5xl md:text-6xl mt-4">Yikes!</h3>
+    <p class="text-[#aaa] opacity-70 text-center mt-2">
+      Looks like no one's here.<br />Are you sure that username was right?
+    </p>
+  </div>
+
+  } @else {
+  <app-repos [loading]="loading" [repos]="repos"></app-repos>
+  }
+</section>

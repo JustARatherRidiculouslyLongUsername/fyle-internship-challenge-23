@@ -8,7 +8,9 @@ import { environment } from '../environment/environment';
   providedIn: 'root',
 })
 export class ApiService {
-  octokit = new Octokit({ auth: environment.githubAuthToken });
+  private itemsPerPage = 10;
+
+  private octokit = new Octokit({ auth: environment.githubAuthToken });
 
   constructor(private httpClient: HttpClient) {}
 
@@ -16,11 +18,21 @@ export class ApiService {
     return this.octokit.rest.search.users({ q: query, per_page: 10, page: 1 });
   }
 
-  async getUser(githubUsername: string) {
-    return this.httpClient.get(
-      `https://api.github.com/users/${githubUsername}`
-    );
+  getUser(githubUsername: string) {
+    return this.octokit.rest.users.getByUsername({
+      username: githubUsername,
+    });
   }
 
-  // implement getRepos method by referring to the documentation. Add proper types for the return type and params
+  getRepos(githubUsername: string, page: number) {
+    return this.octokit.rest.repos.listForUser({
+      username: githubUsername,
+      per_page: this.itemsPerPage,
+      page,
+    });
+  }
+
+  setItemsPerPage(itemCount: number): void {
+    this.itemsPerPage = itemCount;
+  }
 }

@@ -1,7 +1,9 @@
 <nav
   [ngClass]="
-    'h-[70px] fixed w-full transition-all z-50 backdrop-blur-sm bg-slate-200 dark:bg-slate-950 ' +
-    (isAtTop ? 'bg-opacity-95' : 'bg-opacity-80 border-b border-surface-800')
+    'h-[70px] fixed w-full transition-all z-50 backdrop-blur-sm bg-slate-200 dark:bg-[rgb(10,10,10)] ' +
+    (isAtTop
+      ? 'bg-opacity-95'
+      : 'bg-opacity-80 border-b dark:border-surface-800')
   "
 >
   <div
@@ -11,13 +13,12 @@
       <app-search-bar></app-search-bar>
     </div>
 
-    <ul class="">
-      <p-button
-        icon="pi pi-sun"
-        outlined="true"
-        severity="secondary"
-        (onClick)="handleDarkModeButtonClicked()"
-      ></p-button>
-    </ul>
+    <p-button
+      icon="pi pi-sun"
+      outlined="true"
+      severity="secondary"
+      class="ml-2"
+      (onClick)="handleDarkModeButtonClicked()"
+    ></p-button>
   </div>
 </nav>
