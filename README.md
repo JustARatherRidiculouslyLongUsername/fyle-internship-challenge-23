@@ -1,43 +1,54 @@
-# Fyle Frontend Challenge
+# Fyle Frontend Challenge - GitHub Search
 
-## Who is this for?
+## What is it?
 
-This challenge is meant for candidates who wish to intern at Fyle and work with our engineering team. The candidate should be able to commit to at least 6 months of dedicated time for internship.
+A fully functional, feature rich GitHub search web app built in Angular 17.
 
-## Why work at Fyle?
+## Features
 
-Fyle is a fast-growing Expense Management SaaS product. We are ~40 strong engineering team at the moment. 
+- Real-time autocomplete user search
+- Optimizations such as
+  - Cached responses
+  - Pagination
+- Keyboard accessibility
+- Fully responsive
+- Clean, intuitive UI
 
-We are an extremely transparent organization. Check out our [careers page](https://careers.fylehq.com) that will give you a glimpse of what it is like to work at Fyle. Also, check out our Glassdoor reviews [here](https://www.glassdoor.co.in/Reviews/Fyle-Reviews-E1723235.htm). You can read stories from our teammates [here](https://stories.fylehq.com).
+## Assumptions
 
-## Challenge outline
-
-This challenge involves implementing application using github api. 
-
-The services that you need to use are already implemented - check out ApiService.
-
-You can see details of this challenge [here](https://fyleuniverse.notion.site/fyleuniverse/Fyle-Frontend-development-challenge-cb5085e5e0864e769e7b98c694400aaa)
-
-__Note__ - This challenge is in angular. We work on angular frameworks & after you join we expect the same from you. Hence it is required to complete this assignement in angular itself.
-
-## What happens next?
-
-You will hear back within 48 hours from us via email.
+The only major assumption made in this project is that it is okay to use a UI library alongside Tailwind for styling. I've used [PrimeNG](https://primeng.org/)
 
 ## Installation
 
-1. Fork this repository to your github account.
-2. Clone the forked repository and proceed with steps mentioned below.
+Before running the project, you need to have the following installed:
 
-### Install requirements
-* Install angular cli [Ref](https://angular.io/cli)
-* `npm install` in this repository 
+1. [Git](https://git-scm.com/downloads)
+2. [Node and `npm`](https://nodejs.org/en/download)
 
-## Development server
+To run this project locally,
 
-Run `ng serve` for a dev server. Navigate to http://localhost:4200/. The app will automatically reload if you change any of the source files.
+1. Clone the repository
 
-## Further help
+```bash
+git clone https://github.com/JustARatherRidiculouslyLongUsername/fyle-internship-challenge-23
+```
 
-Visit the [Angular Documentation](https://angular.io/guide/styleguide) to learn more.
-Styling is to be strictly done with [Tailwind](https://tailwindcss.com/docs/installation).
+2. Install dependencies
+
+```bash
+npm i
+```
+
+3. Run the development server
+
+```bash
+npm start
+```
+
+## Testing
+
+To run the test suite,
+
+```bash
+npm run test
+```
